@@ -1,0 +1,7 @@
+#!/bin/bash
+cd $PBS_O_WORKDIR
+export MPDHOSTS=`cat $PBS_NODEFILE | uniq | wc -l`
+export PROCS=`cat $PBS_NODEFILE | wc -l`
+mpdboot --verbose --rsh=ssh --totalnum=$MPDHOSTS --file=$PBS_NODEFILE
+mpiexec -np $PROCS ./mpi_nstat.py -t --genes 7000 --permutations 100 last
+mpdallexit
