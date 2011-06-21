@@ -23,7 +23,8 @@ to test such a port.
     library which contains many numerical computation routines.
  5. A standard C++ toolchain (e.g., g++ and GNU make) with pthread and
     fPIC support.
- 6. The SWIG interface compiler to connect the C++ code with python.
+ 6. (Optional) The SWIG interface compiler to connect the C++ code
+    with python.  This is needed only when you need to modify the code.
 
 ** Install dependencies on a Ubuntu system (10.04 x86_64)
  - MPI :: Two implementations (MPICH2 and Open MPI) can be installed
@@ -76,9 +77,10 @@ to test such a port.
       PYTHONPATH.  Tested pypar version: 2.1.4_94
 ** Compiling and installing this package (corrcperm)
   1. Change to the source directory.
-  2. Optional: Use "swig -c++ -python -threads corrcperm.i" to generate file
-     "corrcperm_wrap.cxx" if it is not already generated and included
-     in the source package.
+  2. Optional: Use "swig -c++ -python -threads corrcperm.i" to
+     generate file "corrcperm_wrap.cxx" if it is not already generated
+     and included in the source package, or you made your own
+     modifications to "corrcperm.i" to suit your needs.
   3. Run "sudo python setup.py install" to build and install it to
      your system's default python library path, which usually is 
     /usr/local/lib/python2.6/dist-packages/
